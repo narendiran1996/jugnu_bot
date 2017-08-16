@@ -91,8 +91,9 @@ The Measurement is done using Atmega2560 using standard libraries for each senso
 ## Navigation
 *	Autonomous Navigation involves the use of camera and sensors(Ultrasonic).
 *	It involves:
-	–	Path following – uses Ultrasonic Sensors
-	–	Direction Identification – uses Camera
+
+	*	Path following – uses Ultrasonic Sensors
+	*	Direction Identification – uses Camera
 
 ### Path Following
 
