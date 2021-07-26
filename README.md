@@ -1,5 +1,10 @@
 # JUGNU BOT - the shopping bot
 
+Vist the url : [Jugnu Bot](https://narendiran1996.github.io/project-blogs/jekyll/update/2017/08/15/jugnuBot.html).
+
+<!-- # JUGNU BOT - the shopping bot
+
+
  	A shopping bot which can detect direction, follow path (between walls), detect items, pick and deliver items.
 	
 ![BOT_1](https://raw.githubusercontent.com/narendiran1996/jugnu_bot/master/jugnu_readme_src/IMG_20170802_070108.jpg)
@@ -135,3 +140,4 @@ sign_board = {item_i_1 : direction, item_id_2 : direction, . . . , item_id_n : d
 # YOUTUBE VIDEO
 
 [![VIDEO LINK](http://img.youtube.com/vi/6H3P8CFzQXI/0.jpg)](http://www.youtube.com/watch?v=6H3P8CFzQXI)
+ -->
