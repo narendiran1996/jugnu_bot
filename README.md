@@ -1,15 +1,12 @@
 # JUGNU BOT - the shopping bot
 
-Vist the url : [Jugnu Bot](https://narendiran1996.github.io/project-blogs/jekyll/update/2017/08/15/jugnuBot.html).
-
-<!-- # JUGNU BOT - the shopping bot
+&emsp;A shopping bot which can detect direction, follow path (between walls), detect items, pick and deliver items.
 
 
- 	A shopping bot which can detect direction, follow path (between walls), detect items, pick and deliver items.
-	
-![BOT_1](https://raw.githubusercontent.com/narendiran1996/jugnu_bot/master/jugnu_readme_src/IMG_20170802_070108.jpg)
+## Description
 
-![BOT_2](https://raw.githubusercontent.com/narendiran1996/jugnu_bot/master/jugnu_readme_src/IMG_20170802_070023.jpg)
+&emsp;A robot takes in the list of items to buy from the user using an Android Application. Processes the information and uses Aruco Markers for finding the direction and path to follow. Locates the item to be picked using the unique Arcuco Markers. Then, picks the item needed and deliver it to starting location.
+
 
 ## Components Used
 *	Raspberry PI 3
@@ -25,9 +22,13 @@ Vist the url : [Jugnu Bot](https://narendiran1996.github.io/project-blogs/jekyll
 *	Batteries
 
 ## Block Diagram
- 
 
-![BLOCK_DIAGRAM](https://raw.githubusercontent.com/narendiran1996/jugnu_bot/master/jugnu_readme_src/block_diag.JPG)
+&emsp;The block digram of the entire process can be seen below:
+
+<center>
+    <img src="https://raw.githubusercontent.com/narendiran1996/jugnu_bot/master/jugnu_readme_src/block_diag.JPG" alt="BLOCK_DIAGRAM" width="500"/>
+</center>
+
 
 ##  Major Modules
 *	Android Application
@@ -39,68 +40,84 @@ Vist the url : [Jugnu Bot](https://narendiran1996.github.io/project-blogs/jekyll
 *	Item Picking
 *	Item Delivery
 
-## Android Application
-An android app is developed with items for selection. These items are then transferred to the PC via Socket connection. The application looks like,
-	
-![ANDROID_APP_SCREENSHOT](https://raw.githubusercontent.com/narendiran1996/jugnu_bot/master/jugnu_readme_src/app_screen.jpg)
+
+
+### Android Application
+&emsp;An android app is used to select the items to get and provide the item ids to the PC via Socket connection. 
+
+<center>
+    <img src="https://raw.githubusercontent.com/narendiran1996/jugnu_bot/master/jugnu_readme_src/app_screen.jpg" alt="ANDROID_APP_SCREENSHOT" width="250"/>
+</center>
 
 The socket connection to the PC with the snippet for receiving,
 
-![SOCKET CONNECTION](https://raw.githubusercontent.com/narendiran1996/jugnu_bot/master/jugnu_readme_src/ando_pc.png)
-                                  
-![SERVER_SNIPPET](https://raw.githubusercontent.com/narendiran1996/jugnu_bot/master/jugnu_readme_src/code_ser_snip.JPG)
+<center>
+    <img src="https://raw.githubusercontent.com/narendiran1996/jugnu_bot/master/jugnu_readme_src/ando_pc.png" alt="SOCKET CONNECTION" width="350"/>
+</center>
+<center>
+    <img src="https://raw.githubusercontent.com/narendiran1996/jugnu_bot/master/jugnu_readme_src/code_ser_snip.JPG" alt="SERVER_SNIPPET" width="550"/>                        
+</center>
 
-## Aruco Markers
-I have used Aruco Markers to represent each item. Aruco Markers also is used for detection of direction in case a junction is being encountered.
 
-![ARUCO_JUNCTION](https://raw.githubusercontent.com/narendiran1996/jugnu_bot/master/jugnu_readme_src/aruco_git.png)
- 
-Here, an example of direction detection is given. If the item we ordered is Chocolate the robot goes to the left, if it’s box then the robot goes to the right. This is done throughout the shop for direction detection.
+### Aruco Markers
+&emsp;Aruco Marks are used for finding the direction and the items.
 
-![ARUCO_SIGN_BOARD](https://raw.githubusercontent.com/narendiran1996/jugnu_bot/master/jugnu_readme_src/aucod_dd.png) 
+<center>
+<img src="https://raw.githubusercontent.com/narendiran1996/jugnu_bot/master/jugnu_readme_src/aruco_git.png" alt="ARUCO_JUNCTION" width="350"/>   
+ </center>
+
+&emsp;Here, an example of direction detection is given. If the item we ordered is Chocolate the robot goes to the left, if it’s box then the robot goes to the right. This is done throughout the shop for direction detection.
+
+<center>
+<img src="https://raw.githubusercontent.com/narendiran1996/jugnu_bot/master/jugnu_readme_src/aucod_dd.png" alt="ARUCO_SIGN_BOARD" width="350"/>   
+</center>
+
 
 ### Aruco Detection
-The detection of aruco is explained in https://github.com/narendiran1996/aruco_detection
+&emsp;The detection of aruco is done using the code available in [Aruco Detection](https://github.com/narendiran1996/aruco_detection).
 
-## Sensor Measurement
+
+
+### Sensor Measurement
 	
-### Sensors Used:
+&emsp;The sensors used are listed below:
 
 
-–Ultrasonic Sensor (HC-SR04)
-–Magnetometer Sensor (HMC5883L)
-–IR Sensor
+1. Ultrasonic Sensor (HC-SR04)
+2. Magnetometer Sensor (HMC5883L)
+3. IR Sensor
 
-*Ultrasonic Sensor is used in Path following during navigation.(to find the distance from the walls)
-*Magnetometer Sensor is used for turning the robot to the desired angle.
-*IR Sensors is used to detect the presence of an item (each item consist of a black line to indicate its presence)
+* Ultrasonic Sensor is used in Path following during navigation.(to find the distance from the walls)
+* Magnetometer Sensor is used for turning the robot to the desired angle.
+* IR Sensors is used to detect the presence of an item (each item consist of a black line to indicate its presence)
 	
-The Measurement is done using Atmega2560 using standard libraries for each sensors and the values are published to ROS master in topic /dist
-	
-## Arm control
-	Four Servo Motors are used for building the arm. It can be as
-•	The Base – turning clockwise and anticlockwise
-•	The Wrist - for making angular/altitudinal changes.
-•	The Grip – to hold the item.
+The Measurement is done using Atmega2560 using standard libraries for each sensors and the values are published to ROS master in topic /dist.
 
-### The Base
-		It has a single Servo Motor for turing the arm both in anticlockwise and clockwise direction. 
+
+
+### Arm control
+&emsp;Four Servo Motors are used for building the arm. It can be as
+*	The Base - turning clockwise and anticlockwise
+*	The Wrist - for making angular/altitudinal changes.
+*	The Grip - to hold the item.
+
+#### The Base
+&emsp;&emsp;It has a single Servo Motor for turing the arm both in anticlockwise and clockwise direction. 
 		
-### The Wrist
-		It has two Servo Motor for changing the height and position of The Grip.
+#### The Wrist
+&emsp;&emsp;It has two Servo Motor for changing the height and position of The Grip.
 		
-### The Grip
-		We have used already available grip to construct this. It has a servo Motor.
+#### The Grip
+&emsp;&emsp;A gripper with Servo Motors is used to hold the items
 
 
-## Navigation
-*	Autonomous Navigation involves the use of camera and sensors(Ultrasonic).
-*	It involves:
+### Navigation
+Autonomous Navigation involves the use of camera and sensors(Ultrasonic). It involves:
 
-	*	Path following – uses Ultrasonic Sensors
-	*	Direction Identification – uses Camera
+*	Path following – uses Ultrasonic Sensors
+*	Direction Identification – uses Camera
 
-### Path Following
+#### Path Following
 
 *	Ultrasonic Sensor attached to the bot on both sides(right and left) gives us distance from the walls of the shop.
 *	The bot follows the path using the distances by maintaining a particular distance(threshold value) from the wall. We adjust the speed for controlling the robot.
@@ -134,10 +151,19 @@ sign_board = {item_i_1 : direction, item_id_2 : direction, . . . , item_id_n : d
 ![ITEM_DETECTION](https://raw.githubusercontent.com/narendiran1996/jugnu_bot/master/jugnu_readme_src/arucod_item_Det.png)
 
 ## Item Delivery
-   Once the Item has been picked, the marker id changes to the exit marker id(here #200) and the robot goes to the exit and drops the item.
+&emsp;Once the Item has been picked, the marker id changes to the exit marker id(here #200) and the robot goes to the exit and drops the item.
+
+# Results
+&emsp;The final output robot is shown below
 
 
-# YOUTUBE VIDEO
+<center>
+<img src="https://raw.githubusercontent.com/narendiran1996/jugnu_bot/master/jugnu_readme_src/IMG_20170802_070108.jpg" alt="BOT_1" width="250"/>   
+<img src="https://raw.githubusercontent.com/narendiran1996/jugnu_bot/master/jugnu_readme_src/IMG_20170802_070023.jpg" alt="BOT_2" width="250"/>   
+</center>
+
+The Youtube Video showing the demo can be seen below:
 
 [![VIDEO LINK](http://img.youtube.com/vi/6H3P8CFzQXI/0.jpg)](http://www.youtube.com/watch?v=6H3P8CFzQXI)
- -->
+
+
